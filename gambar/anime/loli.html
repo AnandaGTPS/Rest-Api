@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Api Loli</title>
+  </head>
+  <body>
+    <img id="gambar-loli" src="" alt="Gambar Loli" />
+    <script>
+      const url = 'https://raw.githubusercontent.com/AnandaGTPS/script/main/loli.js';
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          const randomLoli = data[randomIndex].loli;
+          document.getElementById('gambar-loli').src = randomLoli;
+          document.getElementById('gambar-loli').alt = `Loli nomor ${randomIndex + 1}`;
+        });
+    </script>
+  </body>
+</html>
