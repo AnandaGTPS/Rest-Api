@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rest Api</title>
+      <style>
+      body {
+        font-family: Arial, sans-serif;
+			line-height: 1.5;
+			padding: 0;
+			margin: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		article {
+			padding: 20px;
+		}
+
+		h1 {
+			font-size: 2em;
+			margin-top: 0;
+		}
+
+		p {
+			margin-top: 0;
+  color: white;
+        }
+      }
+      </style>
+</head>
+<body>
+	<header>
+		<h2>Rest Api Ananda1240</h2>
+		<img id="gambar-loli" src="" alt="Gambar Loli" style="max-width: 350px; max-height: 350px;"/>
+    <script>
+      const url = 'https://raw.githubusercontent.com/AnandaGTPS/script/main/loli.js';
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          const randomLoli = data[randomIndex].loli;
+          document.getElementById('gambar-loli').src = randomLoli;
+          document.getElementById('gambar-loli').alt = `Loli nomor ${randomIndex + 1}`;
+        });
+    </script>
+    
+    <section id="randomanime">
+    	<h2>Random Anime</h2>
+    <a href="gambar/anime/waifu.html">Waifu</a>
+    <a href="gambar/anime/loli.html">Loli</a>
+    
+    <section id="nsfw">
+    	<h2>Nsfw</h2>
+    <a href="gambar/anime/nsfw/ahegao.html">Ahegao</a>
+    <a href="gambar/anime/nsfw/ass.html">Ass</a>
+    <a href="gambar/anime/nsfw/bdsm.html">Bdsm</a>
+    <a href="gambar/anime/nsfw/blowjob.html">Blowjob</a>
+    <a href="gambar/anime/nsfw/cuckold.html">Cuckold</a>
+    
+    <section id="cecan">
+    	<h2>Cecan</h2>
+    <a href="gambar/cecan/china.html">China</a>
+    <a href="gambar/cecan/indonesia.html">Indonesia</a>
+    <a href="gambar/cecan/jepang.html">Jepang</a>
+    <a href="gambar/cecan/korea.html">Korea</a>
+    <a href="gambar/cecan/malaysia.html">Malaysia</a>
+    <a href="gambar/cecan/thailand.html">Thailand</a>
+    <a href="gambar/cecan/vietnam.html">Vietnam</a>
+    
+    <section id="cogan">
+    	<h2>Cogan</h2>
+     <a href="gambar/cogan/cogan.html">Cogan</a>
+    
+    <section id="wallpaper">
+    	<h2>Wallpaper</h2>
+    <a href="wallpaper/CyberSpace.html">CyberSpace</a>
+    <a href="wallpaper/GameWallp.html">GameWallp</a>
+    <a href="wallpaper/Islamic.html">Islamic</a>
+    <a href="wallpaper/Mountain.html">Mountain</a>
+    <a href="wallpaper/Progamming.html">Progamming</a>
+    <a href="wallpaper/Technology.html">Technology</a>
+    
+	<section id="kontak">
+		<h2>Kontak</h2>
+		<a href="https://wa.me/6282139672290">WhatsApp</a>
+
+</section>
+    
+</main>
+
+<footer>
+	<p>&copy; 2023 Ananda1240</p>
+</footer>
