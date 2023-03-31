@@ -1,0 +1,162 @@
+.button {
+  background-color: #ccc; /* Warna abu-abu */
+  color: #fff; /* Warna teks putih */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out; /* Transisi perubahan warna latar belakang */
+}
+
+/* Efek hover ketika cursor diarahkan ke tombol */
+.button:hover {
+  background-color: #666; /* Warna abu-abu gelap */
+}
+
+/* ==================================== */
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  height: 50px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #fff;
+  transition: width 0.3s;
+}
+
+nav ul li a:hover:after {
+  width: 100%;
+}
+
+
+/* ==================================== */
+
+/* Style untuk container */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Style untuk kolom */
+.column {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* Style untuk clear float */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+body {
+        font-family: Arial, sans-serif;
+			line-height: 1.5;
+			padding: 0;
+			margin: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		article {
+			padding: 20px;
+		}
+
+		h1 {
+			font-size: 2em;
+			margin-top: 0;
+		}
+
+		p {
+			margin-top: 0;
+  color: white;
+        }
+      }
+      
+/* ==================================== */
+      
+.kontak-section {
+    background-image: url("gambar/system/main.jpg");
+    background-repeat: repeat;
+    padding: 30px;
+    text-align: center;
+}
+
+/* ==================================== */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: #ddd;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.parallax {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.parallax-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+

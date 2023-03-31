@@ -1,4 +1,4 @@
-const url = 'https://api.waifu.pics/sfw/waifu'; // Ganti dengan URL JSON yang ingin digunakan
+const url = 'https://api.waifu.pics/nsfw/neko'; // Ganti dengan URL JSON yang ingin digunakan
 
 fetch(url)
   .then(response => response.json())
