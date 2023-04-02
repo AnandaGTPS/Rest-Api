@@ -1,5 +1,5 @@
 .button {
-  background-color: #ccc; /* Warna abu-abu */
+  background-color: #00C408; /* Warna abu-abu */
   color: #fff; /* Warna teks putih */
   padding: 12px 24px;
   border: none;
@@ -9,13 +9,34 @@
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease-in-out; /* Transisi perubahan warna latar belakang */
+  transition: background-color 0.2s ease-in-out; /* Transisi perubahan warna latar belakang */
 }
 
 /* Efek hover ketika cursor diarahkan ke tombol */
 .button:hover {
-  background-color: #666; /* Warna abu-abu gelap */
+  background-color: #007004; /* Warna abu-abu gelap */
 }
+
+.my-button {
+  background-color: #4CAF50; /* Warna latar belakang */
+  border: none; /* Tanpa garis tepi */
+  color: white; /* Warna teks */
+  padding: 4px 8px; /* Ukuran padding (jarak antara teks dan garis tepi) */
+  text-align: center; /* Posisi teks dalam tombol */
+  text-decoration: none; /* Tanpa garis bawah pada teks */
+  display: inline-block; /* Mengubah tombol menjadi elemen inline */
+  font-size: 14px; /* Ukuran teks */
+  margin: 4px 2px; /* Jarak margin */
+  cursor: pointer; /* Mengubah kursor ketika pointer berada di atas tombol */
+  border-radius: 4px; /* Mengubah sudut pada garis tepi */
+}
+
+.my-button:hover {
+  background-color: #3e8e41; /* Warna latar belakang ketika pointer berada di atas tombol */
+  color: white; /* Warna teks ketika pointer berada di atas tombol */
+}
+
+
 
 /* ==================================== */
 
@@ -94,6 +115,10 @@ body {
 			padding: 0;
 			margin: 0;
 		}
+		
+		.arabic-text {
+  font-family: 'Amiri', serif;
+}
 
 		header {
 			background-color: #333;
@@ -160,3 +185,23 @@ body {
   color: #fff;
 }
 
+#typed-text{
+  border-right: 0.15em solid orange;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: typing 1.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 22% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: green; }
+}
