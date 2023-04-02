@@ -1,9 +1,13 @@
-<!-- HTML -->
-<img id="random-image" src="" alt="Random Image">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Wallpaper</title>
+</head>
+<body>
+  <p id="random-text"></p>
 
-<script>
-  // Ambil array URL gambar dari file JSON
-  const imageArray = [
+  <script>
+    var textArray = [
  "https://c4.wallpaperflare.com/wallpaper/288/623/752/technology-asus-rog-asus-hd-wallpaper-preview.jpg",
  "https://c4.wallpaperflare.com/wallpaper/163/392/912/map-wold-map-technology-world-wallpaper-preview.jpg",
  "https://c4.wallpaperflare.com/wallpaper/1007/71/635/windows-10-technology-minimalism-black-wallpaper-preview.jpg",
@@ -510,9 +514,16 @@
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  // Dapatkan elemen gambar HTML
-  const imgElement = document.getElementById('random-image');
+function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+      }
 
-  // Tetapkan URL gambar acak ke atribut src elemen gambar
-  imgElement.src = getRandomElement(imageArray);
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text =  '{"url":"' + randomText + '"}'
+      randomTextElement.innerHTML = text;
 </script>
+
+  </body>
+</html>
