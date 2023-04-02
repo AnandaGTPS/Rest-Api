@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Api Cogan</title>
+	<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Cogan</title>
 </head>
 <body>
-	<img id="gambar" src="" alt="gambar acak">
-	<script>
-		var gambarArray = [
+  <p id="random-text"></p>
+
+  <script>
+    var textArray = [
 {"url":"https://i.pinimg.com/originals/10/57/9b/10579b6c326063161bc27fb301e74527.jpg"},
 {"url":"https://i.pinimg.com/474x/09/16/7f/09167f386fa8eb3b0acdd715f2d0e5f5.jpg"},
 {"url":"https://i.pinimg.com/originals/62/1e/c5/621ec56a042a6aecbdd7b18cfe7bb9c5.png"},
@@ -108,9 +112,16 @@
 {"url":"https://i.pinimg.com/736x/65/d3/72/65d3723a129317c6ff3cf8e12d357fd8.jpg"},
 {"url":"https://i.pinimg.com/originals/f7/23/a1/f723a136225f4ffd2afb600014b3bcb1.png"}
 		];
-		var gambar = document.getElementById('gambar');
-		var randomIndex = Math.floor(Math.random() * gambarArray.length);
-		gambar.src = gambarArray[randomIndex].url;
-	</script>
-</body>
+		function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+      }
+
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text =  '{"url":"' + randomText.url + '"}'
+      randomTextElement.innerHTML = text;
+</script>
+
+  </body>
 </html>
