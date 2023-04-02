@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Api Waifu</title>
+  <title>Api Cuddle</title>
 </head>
 <body>
 
 <p id="url"></p>
 
   <script>
-    fetch('https://api.waifu.pics/sfw/waifu')
+    fetch('https://api.waifu.pics/sfw/cuddle')
       .then(response => response.json())
       .then(data => {
         const obj = {url: data.url};

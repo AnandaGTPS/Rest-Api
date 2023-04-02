@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Api Waifu</title>    
-  </head>
-  <body>
-  	<img id="img-container" src="">
-    <div id="result"></div>
-    <script src="../../script/megumin.js"></script>
-  </body>
+<head>
+  <title>Api Megumin</title>
+</head>
+<body>
+
+<p id="url"></p>
+
+  <script>
+    fetch('https://api.waifu.pics/sfw/megumin')
+      .then(response => response.json())
+      .then(data => {
+        const obj = {url: data.url};
+        const jsonString = JSON.stringify(obj);
+        document.getElementById('url').textContent = jsonString;
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
 </html>

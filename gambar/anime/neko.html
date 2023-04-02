@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rest Api Ananda1240</title>
+  <title>Api Neko</title>
 </head>
 <body>
-  <div id="image-container"></div>
+  <p id="random-text"></p>
 
   <script>
-    // Data JSON yang berisi tautan gambar
-    const jsonData = [
+    var textArray = [
       {"url":"https://i.pinimg.com/originals/7b/04/93/7b049307bc82190d4eef46756920455c.jpg"},
 {"url":"https://i.pinimg.com/736x/75/1d/4b/751d4bda81598c27a15ac46874b3a305.jpg"},
 {"url":"https://i.pinimg.com/564x/09/be/e8/09bee8b62d0f0a03fa70271993e2d651.jpg"},
@@ -111,27 +110,15 @@
 {"url":"https://i.pinimg.com/474x/7a/b3/e3/7ab3e3f6eed304a4ff8562bff95d6171.jpg"}
     ];
 
-    // Ambil div container gambar
-    const imageContainer = document.getElementById("image-container");
+    function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+      }
 
-    // Fungsi untuk menampilkan gambar secara acak
-    function displayRandomImage() {
-      // Generate indeks acak dari array jsonData
-      const randomIndex = Math.floor(Math.random() * jsonData.length);
-      // Ambil objek gambar pada indeks acak tersebut
-      const randomImage = jsonData[randomIndex];
-      // Buat elemen <img> baru
-      const img = document.createElement("img");
-      img.src = randomImage.url;
-      img.classList.add("image");
-      // Tampilkan gambar di dalam div container
-      imageContainer.appendChild(img);
-    }
-
-    // Tampilkan gambar secara acak
-    for (let i = 0; i < 1; i++) {
-      displayRandomImage();
-    }
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text =  '{"url":"' + randomText.url + '"}'
+      randomTextElement.innerHTML = text;
   </script>
 </body>
 </html>
