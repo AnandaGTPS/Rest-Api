@@ -4,9 +4,9 @@
     <title>Api Nsfw</title>
   </head>
   <body>
-    <img id="gambar" src="" alt="Gambar" />
+    <p id="random-text"></p>
     <script>
-var gambar = [
+var textArray = [
 {"url":"https://media.discordapp.net/attachments/531827668002275328/682642520060330037/fdbiq6ovshj41.jpg"},
 {"url":"https://media.discordapp.net/attachments/531827668002275328/682430717652893754/62brFYV_d.jpg"},
 {"url":"https://media.discordapp.net/attachments/531827668002275328/682747340041224248/4Gg9Cp2_d.jpg"},
@@ -154,8 +154,15 @@ var gambar = [
 {"url":"https://cdn.discordapp.com/attachments/770948564947304448/771017302874390558/1814-5G-g9PY315s.jpg"}
 ];
 
-var randomGambar = Math.floor(Math.random() * gambar.length);
-document.getElementById("gambar").src = gambar[randomGambar].url;
+function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+      }
+
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text =  '{"url":"' + randomText.url + '"}'
+      randomTextElement.innerHTML = text; 
 </script>
 
   </body>

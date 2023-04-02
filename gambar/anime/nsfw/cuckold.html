@@ -4,9 +4,9 @@
     <title>Api Nsfw</title>
   </head>
   <body>
-    <img id="gambar" src="" alt="Gambar" />
+    <p id="random-text"></p>
     <script>
-var gambar = [
+var textArray = [
 {"url":"https://external-preview.redd.it/u5s6LYlHNzp1vGMkBpp_lpF31vn74g1aLd0cT3n69nk.jpg?width=640&height=905&crop=smart&auto=webp&s=330c2b07c7d20e0d29c8d633bd448df84372ef12"},
 {"url":"https://i.redd.it/svlfk6pjpoa51.jpg"},
 {"url":"https://preview.redd.it/px4ags2vura51.jpg?width=640&crop=smart&auto=webp&s=a7f572e4381d42825eb8982af147e36b32086a20"},
@@ -56,8 +56,15 @@ var gambar = [
 {"url":"https://konachan.com/sample/747b76bfb23f7903019da58fb09bea9b/Konachan.com%20-%20316633%20sample.jpg"}
 ];
 
-var randomGambar = Math.floor(Math.random() * gambar.length);
-document.getElementById("gambar").src = gambar[randomGambar].url;
+function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+      }
+
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text =  '{"url":"' + randomText.url + '"}'
+      randomTextElement.innerHTML = text;
 </script>
 
   </body>
