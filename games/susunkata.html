@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Games</title>
+</head>
+<body>
+  <p id="random-text"></p>
+
+  <script>
+          var textArray = [
+        "ayam", 
+        "babi", 
+        "kuda", 
+        "rusia", 
+        "anjing", 
+        "sabun", 
+        "kertas", 
+        "karton", 
+        "topeng", 
+        "bendera", 
+        "burung", 
+        "durian", 
+        "ikan", 
+        "kain", 
+        "jam", 
+        "paku", 
+        "pisang", 
+        "tas", 
+        "kursi", 
+        "kambing", 
+        "kerbau", 
+        "malaysia", 
+        "palu", 
+        "ular", 
+        "bantal", 
+        "lemari", 
+        "handuk", 
+        "garpu", 
+        "kucing", 
+        "cermin", 
+        "celana", 
+        "bandara", 
+        "banteng", 
+        "lemon", 
+        "becak", 
+        "semangka", 
+        "apel", 
+        "bangau", 
+        "kopi", 
+        "pilot", 
+        "halaman", 
+        "pintu", 
+        "badak", 
+        "satelit", 
+        "kandang", 
+        "laut", 
+        "pantai", 
+        "hutan", 
+        "kebun", 
+        "baju", 
+        "celana", 
+        "sepatu", 
+        "topi", 
+        "pedas", 
+        "manis", 
+        "pahit", 
+        "domba", 
+        "jerapah", 
+        "tisu", 
+        "bata", 
+        "jendela", 
+        "air", 
+        "wifi", 
+        "kabel", 
+        "sungai", 
+        "sawah", 
+        "gunung", 
+        "sapu", 
+        "gajah", 
+        "piring", 
+        "pensil", 
+        "batu", 
+        "lilin", 
+        "pintu", 
+        "nyamuk", 
+        "rambutan", 
+        "beruang", 
+        "meja", 
+        "donat", 
+        "peci", 
+        "sapu", 
+        "kamus", 
+        "dokter", 
+        "tentara", 
+        "semut", 
+        "kelapa", 
+        "sekolah", 
+        "kipas", 
+        "stiker", 
+        "bar", 
+        "ayam", 
+        "semut"
+      ];
+
+      function shuffleWord(word) {
+        var shuffledWord = "";
+        word = word.split('');
+        while (word.length > 0) {
+          shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
+        }
+        return shuffledWord;
+      }
+
+      function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        var jawaban = textArray[randomIndex];
+        var soal = shuffleWord(jawaban).split('').join('-').toUpperCase();
+        return {
+          "soal": soal, 
+          "jawaban": jawaban
+        };
+      }
+
+      var randomTextElement = document.getElementById("random-text");
+      var randomText = getRandomText();
+      var text = '{<br>"soal":"' + randomText.soal + '",<br>"jawaban":"' + randomText.jawaban + '"<br>}'
+      randomTextElement.innerHTML = text;
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Api Random Text</title>
+  </head>
+  <body>
+    <p id="random-text"></p>
+    <script>
+      var textArray = []; // array kosong
+
+      // fungsi untuk memuat JSON dari URL menggunakan AJAX
+      function loadJSON(url) {
+        return new Promise((resolve, reject) => {
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+          xhr.responseType = "json";
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              resolve(xhr.response);
+            } else {
+              reject(Error("Gagal memuat JSON"));
+            }
+          };
+          xhr.onerror = function() {
+            reject(Error("Gagal memuat JSON"));
+          };
+          xhr.send();
+        });
+      }
+
+      // memuat JSON dari URL dan menambahkan objek loli ke array textArray
+      loadJSON("https://raw.githubusercontent.com/AnandaGTPS/script/main/AsmaulHusna.js")
+        .then(json => {
+          var loliArray = json; // mengambil array objek loli dari JSON
+          loliArray.forEach(loli => {
+            textArray.push(loli); // menambahkan objek loli ke array textArray
+          });
+
+          // Menampilkan teks setelah textArray terisi dengan benar
+          var params = new URLSearchParams(window.location.search);
+          var number = params.get('number');
+
+          if (!number) {
+            var randomTextElement = document.getElementById("random-text");
+            var error = {
+              status: 403,
+              message: "error, Please enter a number!",
+              result: "error"
+            };
+            var text = JSON.stringify(error, null, 2);
+            randomTextElement.innerHTML = "<pre>" + text + "</pre>";
+          } else {
+            var randomText = getRandomText(number);
+            if (randomText) {
+              var text = "{" + "<br>" +
+              '"number" :' + " "+ '"' + randomText.number + '"' + ","+ "<br>" +
+                           '"latin" :' + " "+ '"' + randomText.latin + '"' + ","+ "<br>" +
+                           '"arab" :' + " "+ '"' + randomText.arab + '"' + ","+ "<br>" +
+                           '"translate_id" :' + " "+ '"' + randomText.translate_id+ '"' + ","+ "<br>" +
+                           '"translate_en" :' + " "+ '"' + randomText.translate_en + '"' + ","+ "<br>" +
+                           "}";
+              var randomTextElement = document.getElementById("random-text");
+              randomTextElement.innerHTML = text;
+            } else {
+              var randomTextElement = document.getElementById("random-text");
+              var error = {
+                status: 403,
+                message: `error, Number ${number} not found!`,
+                result: "error"
+              };
+              var text = JSON.stringify(error, null, 2);
+              randomTextElement.innerHTML = "<pre>" + text + "</pre>";
+            }
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+      function getRandomText(number) {
+        var result = textArray.find(function(text) {
+          return text.number == number;
+        });
+        return result;
+      }
+    </script>
+  </body>
+</html>

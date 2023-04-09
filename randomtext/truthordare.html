@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Kata-Kata</title>
+</head>
+<body>
+  <p id="random-text"></p>
+
+  <script>
+  	const type = new URLSearchParams(window.location.search).get('type');
+  if(type === 'truth'){
+    var textArray = []; // array kosong
+
+    // fungsi untuk memuat JSON dari URL menggunakan AJAX
+    function loadJSON(url) {
+      return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "json";
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject(Error("Gagal memuat JSON"));
+          }
+        };
+        xhr.onerror = function() {
+          reject(Error("Gagal memuat JSON"));
+        };
+        xhr.send();
+      });
+    }
+
+    // memuat JSON dari URL dan menambahkan objek loli ke array textArray
+    loadJSON("../database/kata-kata/truth.json")
+      .then(json => {
+        var loliArray = json; 
+        loliArray.forEach(loli => {
+          textArray.push(loli);
+        });
+
+        var randomTextElement = document.getElementById("random-text");
+        var randomText = getRandomText();
+        var text = '{"truth":"' + randomText + '"}'
+        randomTextElement.innerHTML = text;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+    }
+    }
+    else if(type === 'dare'){
+    var textArray = []; // array kosong
+
+    // fungsi untuk memuat JSON dari URL menggunakan AJAX
+    function loadJSON(url) {
+      return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "json";
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject(Error("Gagal memuat JSON"));
+          }
+        };
+        xhr.onerror = function() {
+          reject(Error("Gagal memuat JSON"));
+        };
+        xhr.send();
+      });
+    }
+
+    // memuat JSON dari URL dan menambahkan objek loli ke array textArray
+    loadJSON("../database/kata-kata/dare.json")
+      .then(json => {
+        var loliArray = json; 
+        loliArray.forEach(loli => {
+          textArray.push(loli);
+        });
+
+        var randomTextElement = document.getElementById("random-text");
+        var randomText = getRandomText();
+        var text = '{"dare":"' + randomText + '"}'
+        randomTextElement.innerHTML = text;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+    }
+    }
+    else {
+    	// Define getRandomText function
+function getRandomText() {
+  var status = "403";
+  var result = "error";
+  return { status, result};
+}
+
+// Call getRandomText function and display result
+var randomTextElement = document.getElementById("random-text");
+var randomText = getRandomText();
+var text = '{<br>"status":"' + randomText.status + '",<br>"message": "type ' + type + ' not found, please enter type truth or dare' + '",<br>"result":"' + randomText.result + '"<br>}'
+randomTextElement.innerHTML = text;
+
+}
+  </script>
+</body>
+</html>
