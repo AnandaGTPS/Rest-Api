@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Youtube Search</title>
+</head>
+<body>
+	<div id="search-results"></div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		const apiKey = 'AIzaSyCw8QzONkBLQd016HE3ExqeKa7ANGD465U'; // ganti dengan API key Anda
+		const searchQuery = new URLSearchParams(window.location.search).get('q');
+		const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${searchQuery}&key=${apiKey}`;
+
+		$.getJSON(apiUrl, function(data) {
+			$.each(data.items, function(i, item) {
+				const result = {
+					channel_name: item.snippet.channelTitle, 
+					thumbnail: item.snippet.thumbnails.default.url,
+					judul: item.snippet.title,
+					url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+					description: item.snippet.description,
+					publisedAt: item.snippet.publishedAt, 
+					downloadUrl: `https://www.ssyoutube.com/watch?v=${item.id.videoId}`
+				};
+				$('#search-results').append(`<pre>${JSON.stringify(result, null, 2)}</pre>`);
+			});
+		});
+	</script>
+</body>
+</html>

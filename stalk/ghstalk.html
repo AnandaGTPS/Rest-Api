@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GitHub Search</title>
+  </head>
+  <body>
+    <div id="search-results"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Mengambil nilai dari parameter "q" pada URL sebagai kata kunci pencarian
+      const searchQuery = new URLSearchParams(window.location.search).get('q');
+      
+      const token ='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'
+      
+      const apiUrl = `https://api.github.com/search/users?q=${searchQuery}&token=${token}`;
+
+      // Melakukan request ke API menggunakan jQuery
+      $.getJSON(apiUrl, function(data) {
+        if (data.total_count == 0) {
+          const error = {
+            status: 403,
+            message: `User '${searchQuery}' not found`,
+            result: "error"
+          };
+          $('#search-results').append(`<pre>${JSON.stringify(error, null, 2)}</pre>`);
+        } else {
+          console.log(data);
+          // Mengambil data dari item pertama hasil pencarian
+          const user = data.items[0];
+        
+          // Membuat objek hasil pencarian
+          const result = {
+            username: user.login,
+            id: user.id, 
+            node_id: user.node_id, 
+            avatar_url: user.avatar_url,
+            gravatar_id: user.gravatar_id,
+            url: user.url, 
+            html_url: user.html_url, 
+            followers_url: user.followers_url, 
+            following_url: user.following_url, 
+            gists_url: user.gists_url, 
+            starred_url: user.starred_url, 
+            subscriptions_url: user.subscriptions, 
+            organizations_url: user.organizations_url, 
+            repos_url: user.repos_url, 
+            events_url: user.events_url, 
+            received_events_url: user.received_events_url,
+            type: user.type, 
+            site_admin: user.site_admin, 
+            score: user.score
+          };
+          console.log(result);
+          // Menampilkan hasil pencarian dalam format JSON
+          $('#search-results').append(`<pre>${JSON.stringify(result, null, 2)}</pre>`);
+        }
+      });
+    </script>
+  </body>
+</html>

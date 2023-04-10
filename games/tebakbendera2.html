@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Games</title>
+</head>
+<body>
+  <p id="random-text"></p>
+
+  <script>
+    var textArray = []; // array kosong
+
+    // fungsi untuk memuat JSON dari URL menggunakan AJAX
+    function loadJSON(url) {
+      return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "json";
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject(Error("Gagal memuat JSON"));
+          }
+        };
+        xhr.onerror = function() {
+          reject(Error("Gagal memuat JSON"));
+        };
+        xhr.send();
+      });
+    }
+
+    // memuat JSON dari URL dan menambahkan objek loli ke array textArray
+    loadJSON("../lib/games/tebakbendera2.json")
+      .then(json => {
+        var loliArray = json; 
+        loliArray.forEach(loli => {
+          textArray.push(loli);
+        });
+
+        var randomTextElement = document.getElementById("random-text");
+        var randomText = getRandomText();
+        var text = '{<br>"img":"' + randomText.img + '",<br>"name":"' + randomText.name + '"<br>}'
+        randomTextElement.innerHTML = text;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    function getRandomText() {
+        var randomIndex = Math.floor(Math.random() * textArray.length);
+        return textArray[randomIndex];
+    }
+  </script>
+</body>
+</html>

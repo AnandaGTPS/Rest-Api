@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Api Games</title>
+</head>
+<body>
+  <p id="random-text"></p>
+
+  <script>
+    var textArray = []; // array kosong
+
+    // fungsi untuk memuat JSON dari URL menggunakan AJAX
+    function loadJSON(url) {
+      return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "json";
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject(Error("Gagal memuat JSON"));
+          }
+        };
+        xhr.onerror = function() {
+          reject(Error("Gagal memuat JSON"));
+        };
+        xhr.send();
+      });
+    }
+
+    // memuat JSON dari URL dan menambahkan objek loli ke array textArray
+    loadJSON("../lib/games/susunkata.json")
+      .then(json => {
+        json.forEach(loli => {
+          textArray.push(loli);
+        });
+        
+        function shuffleWord(word) {
+          var shuffledWord = "";
+          word = word.split('');
+          while (word.length > 0) {
+            shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
+          }
+          return shuffledWord;
+        }
+
+        function getRandomText() {
+          var randomIndex = Math.floor(Math.random() * textArray.length);
+          var jawaban = textArray[randomIndex];
+          var soal = shuffleWord(jawaban).split('').join('-').toUpperCase();
+          return {
+            "soal": soal, 
+            "jawaban": jawaban
+          };
+        }
+
+        var randomTextElement = document.getElementById("random-text");
+        var randomText = getRandomText();
+        var text = '{<br>"soal":"' + randomText.soal + '",<br>"jawaban":"' + randomText.jawaban + '"<br>}';
+        randomTextElement.innerHTML = text;
+      });
+  </script>
+</body>
+</html>
